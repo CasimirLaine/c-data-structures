@@ -7,13 +7,13 @@ typedef struct {
 	void* data;
 } List;
 
-List* l_create(const int bytes);
+List* l_create(unsigned int bytes);
 
-void* l_get(List* lPtr, int index);
+void* l_get(List* lPtr, unsigned int index);
 
 void l_add(List* lPtr, void* value);
 
-void l_remove(List* lPtr, int index);
+void l_remove(List* lPtr, unsigned int index);
 
 void l_clear(List* lPtr);
 
