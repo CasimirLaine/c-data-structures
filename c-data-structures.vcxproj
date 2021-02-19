@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\color.c" />
     <ClCompile Include="src\list.c" />
     <ClCompile Include="src\test.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\color.h" />
     <ClInclude Include="src\list.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
