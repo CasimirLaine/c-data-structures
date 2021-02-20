@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include "list.h"
 
-typedef char BYTE;
-
 static const unsigned int DEFAULT_CAPACITY = 10;
+static const float GROWTH_FACTOR = 1.5;
 
 void nullPointerExit() {
 	printf("Null pointer exception\n");
@@ -47,29 +46,28 @@ void* l_get(List* lPtr, unsigned int index) {
 		indexOutOfBoundsExit();
 		return NULL;
 	}
-	BYTE* bytePtr = (BYTE*) lPtr->data;
+	l_BYTE* bytePtr = (l_BYTE*) lPtr->data;
 	return &bytePtr[index * lPtr->bytes];
 }
 
-void set(List* lPtr, void* value, unsigned int index) {
-	BYTE* bytePtr = (BYTE*) lPtr->data;
-	BYTE* valueBytePtr = (BYTE*) value;
+void l_set(List* lPtr, l_BYTE value[], unsigned int index) {
+	l_BYTE* dataPtr = (l_BYTE*) lPtr->data;
 	for (unsigned int i = 0; i < lPtr->bytes; i++) {
-		BYTE* indexPtr = &bytePtr[index * lPtr->bytes + i];
-		*indexPtr = *(valueBytePtr + i);
+		l_BYTE* indexPtr = &dataPtr[index * lPtr->bytes + i];
+		*indexPtr = (&(l_BYTE) value)[i];
 	}
 }
 
-void l_add(List* lPtr, void* value) {
+void l_add(List* lPtr, l_BYTE value[]) {
 	if (lPtr == NULL) {
 		nullPointerExit();
 		return;
 	}
 	const unsigned int bytesNeeded = lPtr->lenght * lPtr->bytes + lPtr->bytes;
 	if (bytesNeeded > lPtr->allocatedBytes) {
-		reallocate_list_data(lPtr, bytesNeeded + DEFAULT_CAPACITY * lPtr->bytes);
+		reallocate_list_data(lPtr, lPtr->allocatedBytes * GROWTH_FACTOR);
 	}
-	set(lPtr, value, lPtr->lenght);
+	l_set(lPtr, value, lPtr->lenght);
 	lPtr->lenght += 1;
 }
 
@@ -84,7 +82,7 @@ void l_remove(List* lPtr, unsigned int index) {
 	}
 	if (lPtr->lenght > 1) {
 		for (; index < lPtr->lenght - 1; index++) {
-			set(lPtr, l_get(lPtr, index + 1), index);
+			l_set(lPtr, *(int*) l_get(lPtr, index + 1), index);
 		}
 	}
 	lPtr->lenght -= 1;
@@ -105,4 +103,31 @@ unsigned int l_size(List* lPtr) {
 		return 0;
 	}
 	return lPtr->lenght;
+}
+
+bool l_empty(List* lPtr) {
+	if (lPtr == NULL) {
+		nullPointerExit();
+		return 0;
+	}
+	return lPtr->lenght == 0;
+}
+
+bool l_contains(List* lPtr, l_BYTE value[]) {
+	return l_indexof(lPtr, value) >= 0;
+}
+
+unsigned int l_indexof(List* lPtr, l_BYTE value[]) {
+	for (unsigned int index = 0; index < lPtr->lenght; index++) {
+		l_BYTE* valuePtr = (l_BYTE*) l_get(lPtr, index);
+		for (unsigned int i = 0; i < lPtr->bytes; i++) {
+			if (valuePtr[i] != (&(l_BYTE) value)[i]) {
+				break;
+			}
+			if (i == lPtr->bytes - 1) {
+				return index;
+			}
+		}
+	}
+	return -1;
 }
