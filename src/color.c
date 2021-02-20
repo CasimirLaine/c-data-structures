@@ -16,7 +16,7 @@ unsigned char toDecimal(const unsigned char hexChar) {
 	return INVALID_HEX;
 }
 
-Color cl_parse_color(const unsigned char string[]) {
+Color cl_parse(const unsigned char string[]) {
 	Color color = {0, 0, 0, DEFAULT_ALPHA};
 	Color* colorPtr = &color;
 	if (string[0] != '#') {
@@ -38,22 +38,22 @@ Color cl_parse_color(const unsigned char string[]) {
 	return color;
 }
 
-unsigned int cl_get_red(const unsigned int color) {
+unsigned int cl_red(const unsigned int color) {
 	const Color colorStruct = *(Color*) &color;
 	return colorStruct.r;
 }
 
-unsigned int cl_get_green(const unsigned int color) {
+unsigned int cl_green(const unsigned int color) {
 	const Color colorStruct = *(Color*) &color;
 	return colorStruct.g;
 }
 
-unsigned int cl_get_blue(const unsigned int color) {
+unsigned int cl_blue(const unsigned int color) {
 	Color colorStruct = *(Color*) &color;
 	return colorStruct.b;
 }
 
-unsigned int cl_get_alpha(const unsigned int color) {
+unsigned int cl_alpha(const unsigned int color) {
 	Color colorStruct = *(Color*) &color;
 	return colorStruct.a;
 }
