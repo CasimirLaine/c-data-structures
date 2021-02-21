@@ -6,12 +6,12 @@ typedef struct {
 	unsigned char r, g, b, a;
 } Color;
 
-Color cl_parse(unsigned char string[]);
+Color cl_parse(const unsigned char string[]);
 
-unsigned int cl_red(unsigned int color);
+unsigned int cl_red(const unsigned int color);
 
-unsigned int cl_green(unsigned int color);
+unsigned int cl_green(const unsigned int color);
 
-unsigned int cl_blue(unsigned int color);
+unsigned int cl_blue(const unsigned int color);
 
-unsigned int cl_alpha(unsigned int color);
+unsigned int cl_alpha(const unsigned int color);

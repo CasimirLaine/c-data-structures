@@ -15,27 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\list.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\test.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\color.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\linked.c">
+    <ClCompile Include="src\lklist.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\arlist.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\list.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\linked.h">
+    <ClInclude Include="src\lklist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\arlist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

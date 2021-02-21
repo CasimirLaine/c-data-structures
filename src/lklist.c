@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "linked.h"
+#include "lklist.h"
 
 LinkedList* lk_create(unsigned int bytes) {
 	LinkedList* lPtr = (LinkedList*) malloc(sizeof(LinkedList));
@@ -128,4 +128,36 @@ unsigned int lk_size(LinkedList* lPtr) {
 		return 0;
 	}
 	return lPtr->lenght;
+}
+
+bool lk_empty(LinkedList* lPtr) {
+	if (lPtr == NULL) {
+		return true;
+	}
+	return lPtr->lenght == 0;
+}
+
+bool lk_contains(LinkedList* lPtr, lk_BYTE value[]) {
+	if (lPtr == NULL) {
+		return false;
+	}
+	return lk_indexof(lPtr, value) >= 0;
+}
+
+unsigned int lk_indexof(LinkedList* lPtr, lk_BYTE value[]) {
+	if (lPtr == NULL) {
+		return false;
+	}
+	for (unsigned int index = 0; index < lPtr->lenght; index++) {
+		lk_BYTE* valuePtr = (lk_BYTE*) lk_get(lPtr, index);
+		for (unsigned int i = 0; i < lPtr->bytes; i++) {
+			if (valuePtr[i] != (&(lk_BYTE) value)[i]) {
+				break;
+			}
+			if (i == lPtr->bytes - 1) {
+				return index;
+			}
+		}
+	}
+	return -1;
 }
