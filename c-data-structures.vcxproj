@@ -23,6 +23,7 @@
     <ClCompile Include="src\lklist.c" />
     <ClCompile Include="src\arlist.c" />
     <ClCompile Include="src\singleton.c" />
+    <ClCompile Include="src\stack.c" />
     <ClCompile Include="src\test.c" />
   </ItemGroup>
   <ItemGroup>
@@ -30,6 +31,7 @@
     <ClInclude Include="src\lklist.h" />
     <ClInclude Include="src\arlist.h" />
     <ClInclude Include="src\singleton.h" />
+    <ClInclude Include="src\stack.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

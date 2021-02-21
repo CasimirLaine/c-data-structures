@@ -30,6 +30,9 @@
     <ClCompile Include="src\singleton.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\stack.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\color.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\singleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
