@@ -27,6 +27,9 @@
     <ClCompile Include="src\arlist.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\singleton.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\color.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\arlist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\singleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
