@@ -5,6 +5,7 @@
 LinkedList* lk_create(unsigned int bytes) {
 	LinkedList* lPtr = (LinkedList*) malloc(sizeof(LinkedList));
 	if (lPtr != NULL) {
+		lPtr->lenght = 0;
 		lPtr->bytes = bytes;
 		lPtr->head = NULL;
 	}
@@ -51,6 +52,9 @@ void* lk_get(LinkedList* lPtr, unsigned int index) {
 	if (lPtr == NULL) {
 		return NULL;
 	}
+	if (index >= lPtr->lenght) {
+		return NULL;
+	}
 	Node* node = NULL;
 	if (index == 0) {
 		node = lPtr->head;
@@ -75,4 +79,33 @@ void lk_add(LinkedList* lPtr, lk_BYTE value[]) {
 		lastNode->next = allocateNode(lPtr->bytes);
 		assignToNode(lastNode->next, value, lPtr->bytes);
 	}
+	lPtr->lenght++;
+}
+
+void lk_remove(LinkedList* lPtr, unsigned int index) {
+	if (lPtr == NULL) {
+		return;
+	}
+	if (index >= lPtr->lenght) {
+		return;
+	}
+	Node* removed;
+	if (index == 0) {
+		removed = lPtr->head;
+		lPtr->head = removed->next;
+	} else {
+		removed = findNode(lPtr, index, 0);
+		Node* previous = findNode(lPtr, index - 1, 0);
+		previous->next = removed->next;
+	}
+	free(removed->value);
+	free(removed);
+	lPtr->lenght--;
+}
+
+unsigned int lk_size(LinkedList* lPtr) {
+	if (lPtr == NULL) {
+		return 0;
+	}
+	return lPtr->lenght;
 }

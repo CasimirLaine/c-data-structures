@@ -68,7 +68,7 @@ void l_add(List* lPtr, l_BYTE value[]) {
 		reallocate_list_data(lPtr, lPtr->allocatedBytes * GROWTH_FACTOR);
 	}
 	l_set(lPtr, value, lPtr->lenght);
-	lPtr->lenght += 1;
+	lPtr->lenght++;
 }
 
 void l_remove(List* lPtr, unsigned int index) {
@@ -85,7 +85,7 @@ void l_remove(List* lPtr, unsigned int index) {
 			l_set(lPtr, *(int*) l_get(lPtr, index + 1), index);
 		}
 	}
-	lPtr->lenght -= 1;
+	lPtr->lenght--;
 }
 
 void l_clear(List* lPtr) {
