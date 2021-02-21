@@ -67,6 +67,17 @@ void* lk_get(LinkedList* lPtr, unsigned int index) {
 	return NULL;
 }
 
+void lk_set(LinkedList* lPtr, lk_BYTE value[], unsigned int index) {
+	if (lPtr == NULL) {
+		return;
+	}
+	if (index >= lPtr->lenght) {
+		return;
+	}
+	Node* ptr = findNode(lPtr->head, index, 0);
+	assignToNode(ptr, value, lPtr->bytes);
+}
+
 void lk_add(LinkedList* lPtr, lk_BYTE value[]) {
 	if (lPtr == NULL) {
 		return;
@@ -94,13 +105,22 @@ void lk_remove(LinkedList* lPtr, unsigned int index) {
 		removed = lPtr->head;
 		lPtr->head = removed->next;
 	} else {
-		removed = findNode(lPtr, index, 0);
-		Node* previous = findNode(lPtr, index - 1, 0);
+		removed = findNode(lPtr->head, index, 0);
+		Node* previous = findNode(lPtr->head, index - 1, 0);
 		previous->next = removed->next;
 	}
 	free(removed->value);
 	free(removed);
 	lPtr->lenght--;
+}
+
+void lk_clear(LinkedList* lPtr) {
+	if (lPtr == NULL) {
+		return;
+	}
+	while (lPtr->lenght > 0) {
+		lk_remove(lPtr, 0);
+	}
 }
 
 unsigned int lk_size(LinkedList* lPtr) {
