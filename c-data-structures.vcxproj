@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\btree.c" />
     <ClCompile Include="src\color.c" />
     <ClCompile Include="src\lklist.c" />
     <ClCompile Include="src\arlist.c" />
@@ -27,6 +28,7 @@
     <ClCompile Include="src\test.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\btree.h" />
     <ClInclude Include="src\color.h" />
     <ClInclude Include="src\lklist.h" />
     <ClInclude Include="src\arlist.h" />

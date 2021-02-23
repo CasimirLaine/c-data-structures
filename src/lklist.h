@@ -3,15 +3,15 @@
 
 typedef unsigned char lk_BYTE;
 
-typedef struct Node {
+typedef struct lk_Node {
 	void* value;
-	struct Node* next;
-} Node;
+	struct lk_Node* next;
+} lk_Node;
 
 typedef struct {
 	unsigned int lenght;
 	unsigned int bytes;
-	Node* head;
+	struct lk_Node* head;
 } LinkedList;
 
 
@@ -19,7 +19,7 @@ LinkedList* lk_create(const unsigned int bytes);
 
 void* lk_get(const LinkedList*, const unsigned int index);
 
-void lk_set(const LinkedList*, const lk_BYTE value[], const unsigned int index);
+void lk_set(LinkedList*, const lk_BYTE value[], const unsigned int index);
 
 void lk_add(LinkedList*, const lk_BYTE value[]);
 
